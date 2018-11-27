@@ -11,10 +11,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name="departments")
-@Data
+@Getter
+@Setter
 public class Department implements Serializable{
 	/**
 	 * 
@@ -33,5 +36,12 @@ public class Department implements Serializable{
 	
 	@OneToMany(mappedBy="department")
 	private Collection<Asset> assets;
+
+	@Override
+	public String toString() {
+		return "Department [id=" + id + ", code=" + code + ", name=" + name + ", active=" + active + "]";
+	}
+	
+	
 	
 }

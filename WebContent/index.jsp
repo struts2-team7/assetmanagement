@@ -1,13 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Tài sản</title>
 </head>
-<body>
-	<s:a href="assets">Danh sách tài sản</s:a>
-</body>
-</html>
+<body> -->
+	<s:a href="assets">Danh mục Tài sản</s:a>
+	<br/>
+	<s:a href="departments">Danh mục Phòng ban</s:a>
+	<br/>
+	<s:a href="producers">Danh mục Hãng sản xuất</s:a>
+	<br/>
+	<s:a href="countries">Danh mục Quốc gia</s:a>
+<!-- </body>
+</html> -->

@@ -1,13 +1,13 @@
 package filter;
 
 
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
-
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-public class CharacterEncodingFilter implements Filter {
+public class CharacterEncodingFilter implements Filter{
 	@Override
 	public void destroy() {
 		
@@ -22,7 +22,6 @@ public class CharacterEncodingFilter implements Filter {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 }

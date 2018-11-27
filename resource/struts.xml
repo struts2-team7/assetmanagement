@@ -6,8 +6,94 @@
 	<constant name="struts.devMode" value="true" />
 
 	<package name="default" extends="hibernate-default">
+
+		<!-- Asset -->
 		<action name="assets" method="list" class="action.AssetAction">
 			<result name="success">/assets.jsp</result>
+		</action>
+		<action name="newAsset" method="addNew"
+			class="action.AssetAction">
+			<result name="success">/addAsset.jsp</result>
+		</action>
+		<action name="saveAsset" method="saveAsset"
+			class="action.AssetAction">
+			<result name="success" type="redirect">assets</result>
+		</action>
+		<action name="editAsset" method="editAsset"
+			class="action.AssetAction">
+			<result name="success">/addAsset.jsp</result>
+		</action>
+		<action name="deleteAsset" method="deleteAsset"
+			class="action.AssetAction">
+			<result name="success" type="redirect">assets</result>
+		</action>
+		
+
+		<!-- Department -->
+		<action name="departments" method="list"
+			class="action.DepartmentAction">
+			<result name="success">/departments.jsp</result>
+		</action>
+		<action name="newDepartment" method="addNew"
+			class="action.DepartmentAction">
+			<result name="success">/addDepartment.jsp</result>
+		</action>
+		<action name="saveDepartment" method="saveDepartment"
+			class="action.DepartmentAction">
+			<result name="success" type="redirect">departments</result>
+		</action>
+		<action name="editDepartment" method="editDepartment"
+			class="action.DepartmentAction">
+			<result name="success">/addDepartment.jsp</result>
+		</action>
+		<action name="deleteDepartment" method="deleteDepartment"
+			class="action.DepartmentAction">
+			<result name="success" type="redirect">departments</result>
+		</action>
+
+
+		<!-- Producer -->
+		<action name="producers" method="list"
+			class="action.ProducerAction">
+			<result name="success">/producers.jsp</result>
+		</action>
+		<action name="newProducer" method="addNew"
+			class="action.ProducerAction">
+			<result name="success">/addProducer.jsp</result>
+		</action>
+		<action name="saveProducer" method="saveProducer"
+			class="action.ProducerAction">
+			<result name="success" type="redirect">producers</result>
+		</action>
+		<action name="editProducer" method="editProducer"
+			class="action.ProducerAction">
+			<result name="success">/addProducer.jsp</result>
+		</action>
+		<action name="deleteProducer" method="deleteProducer"
+			class="action.ProducerAction">
+			<result name="success" type="redirect">producers</result>
+		</action>
+
+		<!-- Country -->
+		<action name="countries" method="list"
+			class="action.CountryAction">
+			<result name="success">/countries.jsp</result>
+		</action>
+		<action name="newCountry" method="addNew"
+			class="action.CountryAction">
+			<result name="success">/addCountry.jsp</result>
+		</action>
+		<action name="saveCountry" method="saveCountry"
+			class="action.CountryAction">
+			<result name="success" type="redirect">countries</result>
+		</action>
+		<action name="editCountry" method="editCountry"
+			class="action.CountryAction">
+			<result name="success">/addCountry.jsp</result>
+		</action>
+		<action name="deleteCountry" method="deleteCountry"
+			class="action.CountryAction">
+			<result name="success" type="redirect">countries</result>
 		</action>
 	</package>
 </struts>
