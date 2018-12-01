@@ -3,7 +3,11 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-	<constant name="struts.devMode" value="true" />
+	<constant name="struts.enable.DynamicMethodInvocation"
+		value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.custom.i18n.resources"
+		value="ApplicationResources" />
 
 	<package name="default" extends="hibernate-default">
 
@@ -17,7 +21,10 @@
 		</action>
 		<action name="saveAsset" method="saveAsset"
 			class="action.AssetAction">
-			<result name="success" type="redirect">assets</result>
+			<result name="success" type="redirectAction">
+				<param name="assets">assets</param>
+				<param name="departmentId">${department.id}</param>
+			</result>
 		</action>
 		<action name="editAsset" method="editAsset"
 			class="action.AssetAction">
@@ -27,7 +34,7 @@
 			class="action.AssetAction">
 			<result name="success" type="redirect">assets</result>
 		</action>
-		
+
 
 		<!-- Department -->
 		<action name="departments" method="list"
@@ -37,10 +44,13 @@
 		<action name="newDepartment" method="addNew"
 			class="action.DepartmentAction">
 			<result name="success">/addDepartment.jsp</result>
+			
 		</action>
 		<action name="saveDepartment" method="saveDepartment"
 			class="action.DepartmentAction">
+			<interceptor-ref name="defaultStackHibernateStrutsValidation"></interceptor-ref>
 			<result name="success" type="redirect">departments</result>
+			<result name="input">/addDepartment.jsp</result>
 		</action>
 		<action name="editDepartment" method="editDepartment"
 			class="action.DepartmentAction">
@@ -55,6 +65,7 @@
 		<!-- Producer -->
 		<action name="producers" method="list"
 			class="action.ProducerAction">
+			<interceptor-ref name="defaultStackHibernateStrutsValidation"></interceptor-ref>
 			<result name="success">/producers.jsp</result>
 		</action>
 		<action name="newProducer" method="addNew"

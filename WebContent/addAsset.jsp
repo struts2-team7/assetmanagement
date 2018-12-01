@@ -9,20 +9,21 @@
 </head>
 <body>
 	<s:bean name="model.Asset" var="asset" />
-	<s:form action="saveAsset">
+	<s:form action="saveAsset" validate="true">
 		<s:push value="asset">
+			<s:textfield label="Phòng ban" name="department.name" readonly="true "/>
+			<s:hidden name="department.id" />
 			<s:hidden name="id" />
 			<s:radio name="category" label="Phân loại"
-				list="{'Nhà cửa, vật kiến trúc','Phương tiện vận tải','Công cụ dụng cụ'}" />
+				list="categories" value="category" listKey="value" listValue="key"/>
 			<s:textfield name="name" label="Tên tài sản" />
 			<s:textfield name="code" label="Mã tài sản" />
-			<s:select name="producer" list="{'Bosch','Samsung','Logitech'}" headerKey=""
-				headerValue="Lựa chọn" label="Hãng sản xuất" />
-
-			<s:select name="country" list="{'Việt Nam','Đức','Mỹ'}" headerKey=""
-				headerValue="Lựa chọn" label="Nước sản xuất" />
+			<s:select name="producer.id" list="producers" listKey="id" value="producer.id" listValue="name"
+				label="Hãng sản xuất" />
+			<s:select name="country.id" list="countries" listKey="id" value="country.id" listValue="name"
+				 label="Nước sản xuất" />
 			<s:textfield name="usingPerson" label="Người sử dụng" />
-			<s:textfield name="startyear" label="Năm bắt đầu" />
+			<s:textfield name="startYear" label="Năm bắt đầu"/>
 			<s:textfield name="price" label="Nguyên giá" />
 			<s:textfield name="depRate" label="Tỉ lệ khấu hao" />
 			<s:textfield name="depYear" label="Thời gian khấu hao" />

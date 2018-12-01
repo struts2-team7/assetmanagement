@@ -8,7 +8,6 @@
 <title>Tài sản</title>
 </head>
 <body> -->
-	<s:a href="assets">Danh mục Tài sản</s:a>
 	<br/>
 	<s:a href="departments">Danh mục Phòng ban</s:a>
 	<br/>

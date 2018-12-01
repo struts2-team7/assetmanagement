@@ -9,13 +9,13 @@
 </head>
 <body>
 
-	<s:form action="saveDepartment">
+	<s:form action="saveDepartment" validate="true">
 
 			<s:hidden name="department.id" />
-			<s:textfield name="department.name" label="Tên phòng ban" />
-			<s:textfield name="department.code" label="Mã phòng ban" />
+			<s:textfield name="department.name" key = "name" label="Tên phòng ban" />
+			<s:textfield name="department.code" key = "code" label="Mã phòng ban" />
 			<s:radio name="department.active" list="actives" label="Trạng thái"
-				listKey="value" listValue="key" value="active" />
+				listKey="value" listValue="key" value="true" />
 			<s:submit align="Center" value="Lưu" />
 
 	</s:form>

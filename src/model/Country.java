@@ -1,7 +1,7 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,6 +36,6 @@ public class Country implements Serializable{
 	private boolean active;
 	
 	@OneToMany(mappedBy="country")
-	private Collection<Asset> assets;
+	private List<Asset> assets;
 	
 }

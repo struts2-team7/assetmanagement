@@ -8,13 +8,13 @@
 <title>Thêm hãng sản xuất</title>
 </head>
 <body>
-	<s:form action="saveProducer">
+	<s:form action="saveProducer" validate="true">
 
 			<s:hidden name="producer.id" />
 			<s:textfield name="producer.name" label="Tên hãng sản xuất" />
 			<s:textfield name="producer.code" label="Mã hãng sản xuất" />
 			<s:radio name="producer.active" list="actives" label="Trạng thái"
-				listKey="value" listValue="key" value="active" />
+				listKey="value" listValue="key" value="true" />
 			<s:submit align="Center" value="Lưu" />
 
 	</s:form>

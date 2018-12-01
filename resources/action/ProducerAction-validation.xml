@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN" "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	<field name="producer.name">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param> 
+			<message key="invalid.fieldvalue.producer.name" />
+		</field-validator>
+	</field>
+	<field name="producer.code">
+		<field-validator type="requiredstring">
+			<message key="invalid.fieldvalue.producer.code" />
+		</field-validator>
+	</field>
+</validators>

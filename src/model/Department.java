@@ -1,7 +1,7 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -35,7 +34,7 @@ public class Department implements Serializable{
 	private boolean active;
 	
 	@OneToMany(mappedBy="department")
-	private Collection<Asset> assets;
+	private List<Asset> assets;
 
 	@Override
 	public String toString() {

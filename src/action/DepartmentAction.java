@@ -84,4 +84,5 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Asset
 		this.actives = actives;
 	}
 
+	
 }

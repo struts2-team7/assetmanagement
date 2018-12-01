@@ -11,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -35,23 +34,23 @@ public class Asset implements Serializable {
 	
 	private String name;
 	
-	private int category;
+	private String category;
 	
 	private String feature;
 	
-	private int price;
+	private Integer price;
 	
 	@Column(name="startyear")
-	private int startYear;
+	private Integer startYear;
 	
 	@Column(name="usingperson")
 	private String usingPerson;
 	
 	@Column(name="dep_rate")
-	private int depRate;
+	private Integer depRate;
 	
 	@Column(name="dep_year")
-	private int depYear;
+	private Integer depYear;
 	
 	@ManyToOne
 	@JoinColumn(name="country_id")

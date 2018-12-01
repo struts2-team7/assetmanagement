@@ -8,13 +8,13 @@
 <title>Thêm quốc gia</title>
 </head>
 <body>
-		<s:form action="saveCountry">
+		<s:form action="saveCountry" validate="true">
 
 			<s:hidden name="country.id" />
 			<s:textfield name="country.name" label="Tên quốc gia" />
 			<s:textfield name="country.code" label="Mã quốc gia" />
 			<s:radio name="country.active" list="actives" label="Trạng thái"
-				listKey="value" listValue="key" value="active" />
+				listKey="value" listValue="key" value="true" />
 			<s:submit align="Center" value="Lưu" />
 
 	</s:form>
