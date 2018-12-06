@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN" "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	<field name="name">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="invalid.fieldvalue.asset.name" />
+		</field-validator>
+	</field>
+	<field name="code">
+		<field-validator type="requiredstring">
+			<message key="invalid.fieldvalue.asset.code" />
+		</field-validator>
+	</field>
+	<field name="usingPerson">
+		<field-validator type="requiredstring">
+			<message key="invalid.fieldvalue.asset.usingPerson" />
+		</field-validator>
+	</field>
+	<field name="startYear">
+		<field-validator type="required">
+			<message key="invalid.fieldvalue.asset.startYear" />
+		</field-validator>
+		<field-validator type="int">
+			<param name="min">1900</param>
+			<param name="max">9999</param>
+			<message key="invalid.fieldvalue.asset.startYear" />
+		</field-validator>
+	</field>
+	<field name="price">
+		<field-validator type="required">
+			<message key="invalid.fieldvalue.asset.price" />
+		</field-validator>
+		<field-validator type="int">
+			<param name="min">0</param>
+			<message key="invalid.fieldvalue.asset.price" />
+		</field-validator>
+	</field>
+	<field name="depRate">
+		<field-validator type="required">
+			<message key="invalid.fieldvalue.asset.depRate" />
+		</field-validator>
+		<field-validator type="double">
+			<param name="min">0</param>
+			<param name="max">100</param>
+			<message key="invalid.fieldvalue.asset.depRate" />
+		</field-validator>
+	</field>
+	<field name="depYear">
+		<field-validator type="required">
+			<message key="invalid.fieldvalue.asset.depYear" />
+		</field-validator>
+		<field-validator type="int">
+			<param name="min">0</param>
+			<param name="max">100</param>
+			<message key="invalid.fieldvalue.asset.depYear" />
+		</field-validator>
+	</field>
+
+</validators>

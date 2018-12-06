@@ -47,7 +47,7 @@ public class Asset implements Serializable {
 	private String usingPerson;
 	
 	@Column(name="dep_rate")
-	private Integer depRate;
+	private Double depRate;
 	
 	@Column(name="dep_year")
 	private Integer depYear;

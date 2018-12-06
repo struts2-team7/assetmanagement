@@ -21,10 +21,14 @@
 		</action>
 		<action name="saveAsset" method="saveAsset"
 			class="action.AssetAction">
+			<interceptor-ref
+				name="defaultStackHibernateStrutsValidation"></interceptor-ref>
 			<result name="success" type="redirectAction">
-				<param name="assets">assets</param>
-				<param name="departmentId">${department.id}</param>
+			<param name="actionName">assets</param>
+			<param name="departmentId">${department.id}</param>
 			</result>
+			<result name="input">/addAsset.jsp</result>
+
 		</action>
 		<action name="editAsset" method="editAsset"
 			class="action.AssetAction">
@@ -44,11 +48,12 @@
 		<action name="newDepartment" method="addNew"
 			class="action.DepartmentAction">
 			<result name="success">/addDepartment.jsp</result>
-			
+
 		</action>
 		<action name="saveDepartment" method="saveDepartment"
 			class="action.DepartmentAction">
-			<interceptor-ref name="defaultStackHibernateStrutsValidation"></interceptor-ref>
+			<interceptor-ref
+				name="defaultStackHibernateStrutsValidation"></interceptor-ref>
 			<result name="success" type="redirect">departments</result>
 			<result name="input">/addDepartment.jsp</result>
 		</action>
@@ -65,7 +70,6 @@
 		<!-- Producer -->
 		<action name="producers" method="list"
 			class="action.ProducerAction">
-			<interceptor-ref name="defaultStackHibernateStrutsValidation"></interceptor-ref>
 			<result name="success">/producers.jsp</result>
 		</action>
 		<action name="newProducer" method="addNew"
@@ -74,7 +78,10 @@
 		</action>
 		<action name="saveProducer" method="saveProducer"
 			class="action.ProducerAction">
+			<interceptor-ref
+				name="defaultStackHibernateStrutsValidation"></interceptor-ref>
 			<result name="success" type="redirect">producers</result>
+			<result name="input">/addProducer.jsp</result>
 		</action>
 		<action name="editProducer" method="editProducer"
 			class="action.ProducerAction">
@@ -96,7 +103,10 @@
 		</action>
 		<action name="saveCountry" method="saveCountry"
 			class="action.CountryAction">
+			<interceptor-ref
+				name="defaultStackHibernateStrutsValidation"></interceptor-ref>
 			<result name="success" type="redirect">countries</result>
+			<result name="input">/addCountry.jsp</result>
 		</action>
 		<action name="editCountry" method="editCountry"
 			class="action.CountryAction">
@@ -106,5 +116,12 @@
 			class="action.CountryAction">
 			<result name="success" type="redirect">countries</result>
 		</action>
+		
+        
+        <!-- Report -->
+		<action name="report" method="execute" class="action.ReportAction">
+			<result name="success">/report.jsp</result>
+		</action>
+		
 	</package>
 </struts>

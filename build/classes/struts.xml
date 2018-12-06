@@ -3,11 +3,125 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-	<constant name="struts.devMode" value="true" />
+	<constant name="struts.enable.DynamicMethodInvocation"
+		value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.custom.i18n.resources"
+		value="ApplicationResources" />
 
 	<package name="default" extends="hibernate-default">
+
+		<!-- Asset -->
 		<action name="assets" method="list" class="action.AssetAction">
 			<result name="success">/assets.jsp</result>
 		</action>
+		<action name="newAsset" method="addNew"
+			class="action.AssetAction">
+			<result name="success">/addAsset.jsp</result>
+		</action>
+		<action name="saveAsset" method="saveAsset"
+			class="action.AssetAction">
+			<interceptor-ref
+				name="defaultStackHibernateStrutsValidation"></interceptor-ref>
+			<result name="success" type="redirectAction">
+			<param name="actionName">assets</param>
+			<param name="departmentId">${department.id}</param>
+			</result>
+			<result name="input">/addAsset.jsp</result>
+
+		</action>
+		<action name="editAsset" method="editAsset"
+			class="action.AssetAction">
+			<result name="success">/addAsset.jsp</result>
+		</action>
+		<action name="deleteAsset" method="deleteAsset"
+			class="action.AssetAction">
+			<result name="success" type="redirect">assets</result>
+		</action>
+
+
+		<!-- Department -->
+		<action name="departments" method="list"
+			class="action.DepartmentAction">
+			<result name="success">/departments.jsp</result>
+		</action>
+		<action name="newDepartment" method="addNew"
+			class="action.DepartmentAction">
+			<result name="success">/addDepartment.jsp</result>
+
+		</action>
+		<action name="saveDepartment" method="saveDepartment"
+			class="action.DepartmentAction">
+			<interceptor-ref
+				name="defaultStackHibernateStrutsValidation"></interceptor-ref>
+			<result name="success" type="redirect">departments</result>
+			<result name="input">/addDepartment.jsp</result>
+		</action>
+		<action name="editDepartment" method="editDepartment"
+			class="action.DepartmentAction">
+			<result name="success">/addDepartment.jsp</result>
+		</action>
+		<action name="deleteDepartment" method="deleteDepartment"
+			class="action.DepartmentAction">
+			<result name="success" type="redirect">departments</result>
+		</action>
+
+
+		<!-- Producer -->
+		<action name="producers" method="list"
+			class="action.ProducerAction">
+			<result name="success">/producers.jsp</result>
+		</action>
+		<action name="newProducer" method="addNew"
+			class="action.ProducerAction">
+			<result name="success">/addProducer.jsp</result>
+		</action>
+		<action name="saveProducer" method="saveProducer"
+			class="action.ProducerAction">
+			<interceptor-ref
+				name="defaultStackHibernateStrutsValidation"></interceptor-ref>
+			<result name="success" type="redirect">producers</result>
+			<result name="input">/addProducer.jsp</result>
+		</action>
+		<action name="editProducer" method="editProducer"
+			class="action.ProducerAction">
+			<result name="success">/addProducer.jsp</result>
+		</action>
+		<action name="deleteProducer" method="deleteProducer"
+			class="action.ProducerAction">
+			<result name="success" type="redirect">producers</result>
+		</action>
+
+		<!-- Country -->
+		<action name="countries" method="list"
+			class="action.CountryAction">
+			<result name="success">/countries.jsp</result>
+		</action>
+		<action name="newCountry" method="addNew"
+			class="action.CountryAction">
+			<result name="success">/addCountry.jsp</result>
+		</action>
+		<action name="saveCountry" method="saveCountry"
+			class="action.CountryAction">
+			<interceptor-ref
+				name="defaultStackHibernateStrutsValidation"></interceptor-ref>
+			<result name="success" type="redirect">countries</result>
+			<result name="input">/addCountry.jsp</result>
+		</action>
+		<action name="editCountry" method="editCountry"
+			class="action.CountryAction">
+			<result name="success">/addCountry.jsp</result>
+		</action>
+		<action name="deleteCountry" method="deleteCountry"
+			class="action.CountryAction">
+			<result name="success" type="redirect">countries</result>
+		</action>
+		
+        
+        <!-- Report -->
+		<action name="report" method="execute" class="action.ReportAction">
+			<result name="success">/report.jsp</result>
+		</action>
+		
 	</package>
 </struts>

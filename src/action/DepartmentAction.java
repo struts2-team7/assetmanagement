@@ -25,7 +25,7 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Asset
 	 */
 	private static final long serialVersionUID = 1L;
 	IDao<Department, Long> departmentDAO = new DaoImpl<>();
-	
+
 	
     private Map<String, Boolean> actives;
     
@@ -48,6 +48,12 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Asset
 	
 	public String list() {
 		departments = departmentDAO.list(Department.class);
+	
+		
+//		reportDao.getCategoryAssetReport().forEach(e-> System.out.println(e));
+//		reportDao.getDepartmentAssetReport().forEach(e-> System.out.println(e));
+//		reportDao.getAssetReport().forEach(e -> System.out.println(e));
+		
 		return SUCCESS;
 	}
 	
@@ -58,9 +64,17 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Asset
 	}
 	
 	public String deleteDepartment() {
+//		  if(department.getAssets().size()>0) {
+//			  System.out.println(department.getAssets());
 		HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
-	    departmentDAO.delete(Department.class, Long.parseLong(request.getParameter("id")));
+		departmentDAO.delete(Department.class, Long.parseLong(request.getParameter("id")));
 	    return SUCCESS;
+//	    }
+//	    else {
+//	    	System.out.println("Không thể xóa phòng ban này");
+////	    	addFieldError("errordelete", "Không thể xóa phòng ban có tài sản!");
+//	    	return null;
+//	    }
 	}
 	
 	public String editDepartment() {
