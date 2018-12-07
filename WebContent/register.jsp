@@ -21,44 +21,34 @@
 								<span class="input-group-text"> <i class="icon-user"></i>
 								</span>
 							</div>
-							<input class="form-control" type="text" placeholder="Họ và tên">
+							<s:textfield cssClass="form-control" placeholder="Họ và tên"></s:textfield>
+							<!-- <input class="form-control" type="text" placeholder="Họ và tên"> -->
 						</div>
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
 								<span class="input-group-text"></span>
 							</div>
-							<input class="form-control" type="text" placeholder="Tài khoản">
+							<s:textfield cssClass="form-control" placeholder="Tài khoản"></s:textfield>
+							<!-- <input class="form-control" type="text" placeholder="Tài khoản"> -->
 						</div>
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="icon-lock"></i>
 								</span>
 							</div>
-							<input class="form-control" type="password" placeholder="Mật khẩu">
+							<s:password cssClass="form-control" placeholder="Mật khẩu"></s:password>
+							<!-- <input class="form-control" type="password" placeholder="Mật khẩu"> -->
 						</div>
 						<div class="input-group mb-4">
 							<div class="input-group-prepend">
 								<span class="input-group-text"> <i class="icon-lock"></i>
 								</span>
 							</div>
-							<input class="form-control" type="password" placeholder="Nhập lại mật khẩu">
+							<s:password cssClass="form-control" placeholder="Nhập lại mật khẩu"></s:password>
+							<!-- <input class="form-control" type="password" placeholder="Nhập lại mật khẩu"> -->
 						</div>
 						<button class="btn btn-block btn-success" type="button">Tạo tài khoản</button>
 					</div>
-					<%-- <div class="card-footer p-4">
-						<div class="row">
-							<div class="col-6">
-								<button class="btn btn-block btn-facebook" type="button">
-									<span>facebook</span>
-								</button>
-							</div>
-							<div class="col-6">
-								<button class="btn btn-block btn-twitter" type="button">
-									<span>twitter</span>
-								</button>
-							</div>
-						</div>
-					</div> --%>
 				</div>
 			</div>
 		</div>

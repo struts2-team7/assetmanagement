@@ -24,8 +24,8 @@
 			<interceptor-ref
 				name="defaultStackHibernateStrutsValidation"></interceptor-ref>
 			<result name="success" type="redirectAction">
-			<param name="actionName">assets</param>
-			<param name="departmentId">${department.id}</param>
+				<param name="actionName">assets</param>
+				<param name="departmentId">${department.id}</param>
 			</result>
 			<result name="input">/addAsset.jsp</result>
 
@@ -116,12 +116,28 @@
 			class="action.CountryAction">
 			<result name="success" type="redirect">countries</result>
 		</action>
-		
-        
-        <!-- Report -->
-		<action name="report" method="execute" class="action.ReportAction">
+
+
+		<!-- Report -->
+		<action name="report" method="execute"
+			class="action.ReportAction">
 			<result name="success">/report.jsp</result>
 		</action>
+
+		<!-- Login -->
+		<action name="loginprocess" class="action.LoginAction">
+			<result name="success">/index.jsp</result>
+			<result name="error">/loginerror.jsp</result>
+		</action>
+
+		<action name="logout" class="action.LoginAction"
+			method="logout">
+			<result name="success">/login.jsp</result>
+		</action>
 		
+		<action name="register" class="action.LoginAction"
+			method="register">
+			<result name="success">/register.jsp</result>
+		</action>
 	</package>
 </struts>

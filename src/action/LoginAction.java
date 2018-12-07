@@ -1,59 +1,60 @@
 package action;
 
+import java.util.Map;
+
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
+import dao.LoginDao;
 
-import dao.DaoImpl;
-import dao.IDao;
-import model.Account;
-import model.Asset;
 
-public class LoginAction extends ActionSupport implements ModelDriven<Asset>{
+
+public class LoginAction extends ActionSupport implements SessionAware{
 	/**
 	 * 
 	 */
 	
 	
 	private static final long serialVersionUID = 1L;
-	IDao<Account, Long> accountDAO = new DaoImpl<>();
-    private Account account = new Account();
-    
-    
-	public Account getAccount() {
-		return account;
+	private String username,userpass;
+	SessionMap<String,String> sessionmap;
+
+	public String getUsername() {
+		return username;
 	}
 
-
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-
-	@Override
-	public Asset getModel() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getUserpass() {
+		return userpass;
 	}
-	
-	@Override
-    public void validate() {
-        if (account.getUsername().length() == (0)) {
-            this.addFieldError("user.uname", "Tài khoản không hợp lệ!");
-        }
-        if (account.getPassword().length() == (0)) {
-            this.addFieldError("user.pwd", "Mật khẩu không hợp lệ!");
-        }
-    }
- 
-//    @Override
-//    public String execute() {
-//        if (accountDAO.find(account.getUsername(), account.getPassword())) {
-//            return SUCCESS;
-//        } else {
-//            this.addActionError("Invalid username and password");
-//        }
-//        return INPUT;
-//    }
-//	
-	
+
+	public void setUserpass(String userpass) {
+		this.userpass = userpass;
+	}
+
+	public String execute(){
+		if(LoginDao.validate(username, userpass)){
+			return "success";
+		}
+		else{
+			return "error";
+		}
+	}
+
+	public void setSession(Map map) {
+		sessionmap=(SessionMap)map;
+		sessionmap.put("login","true");
+	}
+
+	public String logout(){
+		sessionmap.invalidate();
+		return "success";
+	}
+	public String register(){
+		return "success";
+	}
 }

@@ -44,10 +44,10 @@
 									<h4 class="title">Struts 2: Quản lý tài sản</h4>
 								</div>
 								<div class="content">
-
+<!-- <img alt="" src="assets/img/flowers.jsp"> -->
 									<div class="typo-line">
 										<h1>
-											Nhóm 7:
+											NHÓM 7:
 										</h1>
 									</div>
 									<div class="typo-line">
