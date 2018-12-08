@@ -17,10 +17,10 @@
 					<li><a href="index.jsp"> <i class="pe-7s-graph"></i>
 							<p>Trang chủ</p>
 					</a></li>
-					<li ><a href="departments"> <i class="pe-7s-science"></i>
+					<li><a href="departments"> <i class="pe-7s-science"></i>
 							<p>Phòng ban</p>
 					</a></li>
-					<li class="active" ><a href="producers"> <i class="pe-7s-user"></i>
+					<li class="active"><a href="producers"> <i class="pe-7s-user"></i>
 							<p>Hãng sản xuất</p>
 					</a></li>
 					<li><a href="countries"> <i class="pe-7s-note2"></i>
@@ -28,6 +28,9 @@
 					</a></li>
 					<li><a href="report"> <i class="pe-7s-news-paper"></i>
 							<p>Báo cáo</p>
+					</a></li>
+					<li><a href="password-form.jsp"> <i class="pe-7s-user"></i>
+							<p>Đổi mật khẩu</p>
 					</a></li>
 				</ul>
 			</div>
@@ -45,13 +48,14 @@
 								<div class="content">
 									<s:form action="saveProducer" validate="true">
 										<s:hidden name="producer.id" />
-										<s:textfield cssClass="form-control" name="producer.name" key="name"
-											label="Tên hãng sản xuất" />
+										<s:fielderror fieldName="producer.code" />
 										<s:textfield cssClass="form-control" name="producer.code" key="code"
 											label="Mã hãng sản xuất" />
+										<s:fielderror fieldName="producer.name" />
+										<s:textfield cssClass="form-control" name="producer.name" key="name"
+											label="Tên hãng sản xuất" />
 										<s:radio name="producer.active" list="actives" label="Trạng thái"
 											listKey="value" listValue="key" value="producer.active" />
-
 										<s:submit align="Center" value="Lưu hãng sản xuất"
 											cssClass="btn btn-info btn-fill pull-right" />
 										<div class="clearfix"></div>

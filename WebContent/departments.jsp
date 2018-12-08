@@ -30,6 +30,9 @@
 					<li><a href="report"> <i class="pe-7s-news-paper"></i>
 							<p>Báo cáo</p>
 					</a></li>
+					<li><a href="password-form.jsp"> <i class="pe-7s-user"></i>
+							<p>Đổi mật khẩu</p>
+					</a></li>
 				</ul>
 			</div>
 		</div>
@@ -42,9 +45,11 @@
 							<div class="card">
 								<div class="header">
 									<h4 class="title">Danh mục Phòng ban</h4>
-									</br>
-									<a href="newDepartment" class="btn btn-info btn-fill pull-left">Thêm phòng
-										ban</a>
+									<div class="errorMessage">
+										<s:actionmessage/>
+									</div>
+									<br> <a href="newDepartment" class="btn btn-info btn-fill pull-left">Thêm
+										phòng ban</a>
 								</div>
 								<div class="content table-responsive table-full-width">
 									<table class="table table-hover table-striped">

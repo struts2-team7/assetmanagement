@@ -40,12 +40,15 @@
 		<field-validator type="required">
 			<message key="invalid.fieldvalue.asset.depRate" />
 		</field-validator>
-		<field-validator type="double">
-			<param name="min">0</param>
-			<param name="max">100</param>
-			<message key="invalid.fieldvalue.asset.depRate" />
-		</field-validator>
 	</field>
+<!-- 	<validator type="double">
+		<param name="fieldName">depRate</param>
+		<param name="minInclusive">0</param>
+		<param name="maxInclusive">100</param>
+		<message>Tỉ lệ phải từ ${minInclusive} đến ${maxInclusive}</message>
+	</validator> -->
+
+
 	<field name="depYear">
 		<field-validator type="required">
 			<message key="invalid.fieldvalue.asset.depYear" />

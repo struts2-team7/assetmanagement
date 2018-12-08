@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Quốc gia</title>
+<title>Đổi mật khẩu</title>
 <jsp:include page="reload/head.jsp" />
 </head>
 <body>
@@ -13,7 +13,6 @@
 				<div class="logo">
 					<a href="index.jsp" class="simple-text"> QUẢN LÝ TÀI SẢN </a>
 				</div>
-
 				<ul class="nav">
 					<li><a href="index.jsp"> <i class="pe-7s-graph"></i>
 							<p>Trang chủ</p>
@@ -24,13 +23,13 @@
 					<li><a href="producers"> <i class="pe-7s-user"></i>
 							<p>Hãng sản xuất</p>
 					</a></li>
-					<li class="active"><a href="countries"> <i class="pe-7s-note2"></i>
+					<li><a href="countries"> <i class="pe-7s-note2"></i>
 							<p>Quốc gia</p>
 					</a></li>
 					<li><a href="report"> <i class="pe-7s-news-paper"></i>
 							<p>Báo cáo</p>
 					</a></li>
-					<li ><a href="password-form.jsp"> <i class="pe-7s-user"></i>
+					<li class="active"><a href="password-form.jsp"> <i class="pe-7s-user"></i>
 							<p>Đổi mật khẩu</p>
 					</a></li>
 				</ul>
@@ -44,45 +43,37 @@
 						<div class="col-md-12">
 							<div class="card">
 								<div class="header">
-									<h4 class="title">Danh mục Quốc gia</h4>
-									</br>
-									<a href="newCountry" class="btn btn-info btn-fill pull-left">Thêm quốc gia
-										</a>
+									<h4 class="title">Đổi mật khẩu</h4>
 								</div>
-								<div class="content table-responsive table-full-width">
-									<table class="table table-hover table-striped">
-										<thead>
-											<th>STT</th>
-											<th>Mã quốc gia</th>
-											<th>Tên quốc gia</th>
-											<th>Sửa</th>
-											<th>Xóa</th>
-										</thead>
-										<tbody>
-										<s:if test="countries.size() > 0">
-											<s:iterator value="countries" status="status">
-												<tr>
-													<td><s:property value="#status.count" /></td>
-													<td><s:property value="code" /></td>
-													<td><s:property value="name" /></td>
-													<td><s:url id="editURL" action="editCountry">
-															<s:param name="id" value="%{id}"></s:param>
-														</s:url> <s:a href="%{editURL}">Sửa</s:a></td>
-													<td><s:url id="deleteURL" action="deleteCountry">
-															<s:param name="id" value="%{id}"></s:param>
-														</s:url> <s:a href="%{deleteURL}" onclick="return confirm('Bạn có muốn xóa?')">Xóa</s:a></td>
-												</tr>
-											</s:iterator>
-											</s:if>
-										</tbody>
-									</table>
+								<div class="content">
+									<s:actionmessage />
+									<s:form action="change">
 
+
+										<s:password name="currentPassword" cssClass="form-control"
+											label="Mật khẩu hiện tại" />
+
+
+										<s:password name="newPassword" cssClass="form-control" label="Mật khẩu mới" />
+
+
+
+										<s:password name="verifyPassword" cssClass="form-control"
+											label="Nhập lại mật khẩu mới" />
+
+
+										<s:submit value="Đổi mật khẩu" cssClass="btn btn-info btn-fill pull-right" />
+
+										<div class="clearfix"></div>
+									</s:form>
 								</div>
 							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>
+
 			<jsp:include page="reload/footer.jsp" />
 		</div>
 	</div>

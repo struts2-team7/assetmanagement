@@ -11,4 +11,10 @@ public interface IDao<T, ID extends Serializable> {
 	T get(Class<T> clazz, ID id);
 
 	void delete(Class<T> clazz, ID id);
+	
+	void delete(T t);
+	
+	T findByCode(String code);
+
+	T findByName(String name);
 }

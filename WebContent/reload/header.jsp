@@ -20,7 +20,10 @@
 
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="#">
-					<p>Xin chào, <s:property value="username"/></p>
+					<p>
+						Xin chào,
+						<s:property value="%{#session.user.fullname}" />
+					</p>
 			</a></li>
 			<li><a href="logout">
 					<p>Đăng xuất</p>

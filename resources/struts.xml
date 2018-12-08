@@ -11,6 +11,26 @@
 
 	<package name="default" extends="hibernate-default">
 
+		<interceptors>
+			<interceptor name="authentication"
+				class="interceptor.LoginInterceptor" />
+			<interceptor-stack name="securityStack">
+				<interceptor-ref name="authentication" />
+				<interceptor-ref name="hibernateSessionInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="securityStack" />
+
+		<global-results>
+			<result name="login">/login.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping result="error"
+				exception="java.lang.exception" />
+		</global-exception-mappings>
+
 		<!-- Asset -->
 		<action name="assets" method="list" class="action.AssetAction">
 			<result name="success">/assets.jsp</result>
@@ -43,7 +63,14 @@
 		<!-- Department -->
 		<action name="departments" method="list"
 			class="action.DepartmentAction">
+			<interceptor-ref name="store">
+				<param name="operationMode">RETRIEVE</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack">
+				<param name="workflow.excludeMethods">execute</param>
+			</interceptor-ref>
 			<result name="success">/departments.jsp</result>
+
 		</action>
 		<action name="newDepartment" method="addNew"
 			class="action.DepartmentAction">
@@ -63,7 +90,12 @@
 		</action>
 		<action name="deleteDepartment" method="deleteDepartment"
 			class="action.DepartmentAction">
+			<interceptor-ref name="store">
+				<param name="operationMode">STORE</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
 			<result name="success" type="redirect">departments</result>
+			<result name="input">/departments.jsp</result>
 		</action>
 
 
@@ -125,19 +157,29 @@
 		</action>
 
 		<!-- Login -->
-		<action name="loginprocess" class="action.LoginAction">
-			<result name="success">/index.jsp</result>
-			<result name="error">/loginerror.jsp</result>
+		<action name="login" class="action.LoginAction" method="login">
+			<interceptor-ref
+				name="defaultStackHibernateStrutsValidation" />
+			<result name="success" type="redirect">/index.jsp</result>
+			<result name="input">/login.jsp</result>
 		</action>
 
-		<action name="logout" class="action.LoginAction"
+		<action name="logout" class="action.AccountAction"
 			method="logout">
-			<result name="success">/login.jsp</result>
+			<result name="success" type="redirect">/login.jsp</result>
 		</action>
-		
-		<action name="register" class="action.LoginAction"
-			method="register">
-			<result name="success">/register.jsp</result>
+		<action name="change-password" class="action.AccountAction"
+			method="goPasswordForm">
+			<result name="success">/password_form.jsp</result>
 		</action>
+		<action name="change" class="action.AccountAction"
+			method="changePassword">
+			<interceptor-ref name="securityStack" />
+			<interceptor-ref
+				name="defaultStackHibernateStrutsValidation" />
+			<result name="input">/password-form.jsp</result>
+			<result name="success" type="redirect">/index.jsp</result>
+		</action>
+
 	</package>
 </struts>

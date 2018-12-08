@@ -29,6 +29,9 @@
 					<li><a href="report"> <i class="pe-7s-news-paper"></i>
 							<p>Báo cáo</p>
 					</a></li>
+					<li><a href="password-form.jsp"> <i class="pe-7s-user"></i>
+							<p>Đổi mật khẩu</p>
+					</a></li>
 				</ul>
 			</div>
 		</div>
@@ -45,10 +48,10 @@
 								<div class="content">
 									<s:form action="saveDepartment" validate="true">
 										<s:hidden name="department.id" />
-										<s:textfield cssClass="form-control" name="department.name" key="name"
-											label="Tên phòng ban" />
 										<s:textfield cssClass="form-control" name="department.code" key="code"
 											label="Mã phòng ban" />
+										<s:textfield cssClass="form-control" name="department.name" key="name"
+											label="Tên phòng ban" />
 										<s:radio name="department.active" list="actives" label="Trạng thái"
 											listKey="value" listValue="key" value="department.active" />
 

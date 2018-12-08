@@ -17,10 +17,10 @@
 					<li><a href="index.jsp"> <i class="pe-7s-graph"></i>
 							<p>Trang chủ</p>
 					</a></li>
-					<li ><a href="departments"> <i class="pe-7s-science"></i>
+					<li><a href="departments"> <i class="pe-7s-science"></i>
 							<p>Phòng ban</p>
 					</a></li>
-					<li class="active" ><a href="producers"> <i class="pe-7s-user"></i>
+					<li class="active"><a href="producers"> <i class="pe-7s-user"></i>
 							<p>Hãng sản xuất</p>
 					</a></li>
 					<li><a href="countries"> <i class="pe-7s-note2"></i>
@@ -28,6 +28,9 @@
 					</a></li>
 					<li><a href="report"> <i class="pe-7s-news-paper"></i>
 							<p>Báo cáo</p>
+					</a></li>
+					<li><a href="password-form.jsp"> <i class="pe-7s-user"></i>
+							<p>Đổi mật khẩu</p>
 					</a></li>
 				</ul>
 			</div>
@@ -45,12 +48,12 @@
 								<div class="content">
 									<s:form action="saveCountry" validate="true">
 										<s:hidden name="country.id" />
-										<s:textfield cssClass="form-control" name="country.name" key="name"
-											label="Tên quốc gia" />
 										<s:textfield cssClass="form-control" name="country.code" key="code"
 											label="Mã quốc gia" />
-										<s:radio name="country.active" list="actives" label="Trạng thái"
-											listKey="value" listValue="key" value="country.active" />
+										<s:textfield cssClass="form-control" name="country.name" key="name"
+											label="Tên quốc gia" />
+										<s:radio name="country.active" list="actives" label="Trạng thái" listKey="value"
+											listValue="key" value="country.active" />
 
 										<s:submit align="Center" value="Lưu quốc gia"
 											cssClass="btn btn-info btn-fill pull-right" />

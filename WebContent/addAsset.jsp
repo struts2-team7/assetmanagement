@@ -29,6 +29,9 @@
 					<li><a href="report"> <i class="pe-7s-news-paper"></i>
 							<p>Báo cáo</p>
 					</a></li>
+					<li><a href="password-form.jsp"> <i class="pe-7s-user"></i>
+							<p>Đổi mật khẩu</p>
+					</a></li>
 				</ul>
 			</div>
 		</div>
@@ -50,7 +53,7 @@
 											<s:hidden name="department.id" />
 											<s:hidden name="id" />
 											<s:radio name="category" label="Phân loại" list="categories" value="1"
-												listKey="value" listValue="key" />
+												listKey="key" listValue="value" />
 											<s:textfield cssClass="form-control" name="name" label="Tên tài sản" />
 											<s:textfield cssClass="form-control" name="code" label="Mã tài sản" />
 											<s:select cssClass="form-control" name="producer.id" list="producers" listKey="id" value="producer.id"

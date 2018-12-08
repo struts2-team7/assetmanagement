@@ -36,7 +36,7 @@ public class AssetAction extends ActionSupport implements ModelDriven<Asset>{
 	
 	private Department department = new Department();
 	
-	private Map<String, Integer> categories;
+	private Map<Integer, String> categories;
 	
 	public Asset getAsset() {
 		return asset;
@@ -66,6 +66,8 @@ public class AssetAction extends ActionSupport implements ModelDriven<Asset>{
 	}
 	
 	public String saveAsset() {
+		HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
+		
 		assetDao.saveOrUpdate(asset);
 		return SUCCESS;
 	}
@@ -117,11 +119,11 @@ public class AssetAction extends ActionSupport implements ModelDriven<Asset>{
 		this.department = department;
 	}
 	
-	public Map<String, Integer> getCategories() {
+	public Map<Integer, String> getCategories() {
 		categories = new HashMap<>();
-		categories.put("Nhà cửa, vật kiến trúc", 1);
-		categories.put("Phương tiện vận tải", 2);
-		categories.put("Công cụ dụng cụ", 3);
+		categories.put(1, "Nhà cửa, vật liệu kiến trúc");
+		categories.put(2, "Phương tiện vận tải");
+		categories.put(3, "Công cụ, dụng cụ");
 		return categories;
 	}
 	

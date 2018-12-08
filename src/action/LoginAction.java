@@ -1,60 +1,49 @@
 package action;
 
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.SessionAware;
+import org.apache.struts2.ServletActionContext;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import dao.LoginDao;
 
+import dao.AccountDao;
+import dao.AccountDaoImpl;
+import lombok.Getter;
+import lombok.Setter;
+import model.Account;
 
+@Getter
+@Setter
+public class LoginAction extends ActionSupport {
 
-public class LoginAction extends ActionSupport implements SessionAware{
 	/**
 	 * 
 	 */
-	
-	
 	private static final long serialVersionUID = 1L;
-	private String username,userpass;
-	SessionMap<String,String> sessionmap;
 
-	public String getUsername() {
-		return username;
-	}
+	private AccountDao accountDao = new AccountDaoImpl();
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+	private String username;
+	private String password;
 
-	public String getUserpass() {
-		return userpass;
-	}
-
-	public void setUserpass(String userpass) {
-		this.userpass = userpass;
-	}
-
-	public String execute(){
-		if(LoginDao.validate(username, userpass)){
-			return "success";
+	public String login() {
+		Account account = accountDao.findByUsernameAndPassword(username, password);
+		if (account == null) {
+			addActionMessage("Sai tài khoản hoặc mật khẩu");
+			return INPUT;
 		}
-		else{
-			return "error";
-		}
+		HttpServletRequest request = (HttpServletRequest) ActionContext.getContext()
+				.get(ServletActionContext.HTTP_REQUEST);
+		request.getSession().setAttribute("user", account);
+		return SUCCESS;
 	}
 
-	public void setSession(Map map) {
-		sessionmap=(SessionMap)map;
-		sessionmap.put("login","true");
-	}
-
-	public String logout(){
-		sessionmap.invalidate();
-		return "success";
-	}
-	public String register(){
-		return "success";
+	@Override
+	public void validate() {
+		if (username == null || username.isEmpty())
+			addFieldError("username", "Bạn chưa nhập tài khoản");
+		if (password == null || password.isEmpty())
+			addFieldError("password", "Bạn chưa nhập mật khẩu");
 	}
 }

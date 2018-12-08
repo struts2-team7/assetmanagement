@@ -45,4 +45,27 @@ public class DaoImpl<T, ID extends Serializable> implements IDao<T, ID> {
 		}
 	}
 
+	@Override
+	public T findByCode(String code) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public T findByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(T t) {
+		try {
+			session.delete(t);
+		} catch (Exception e) {
+			transaction.rollback();
+			e.printStackTrace();
+		}
+		
+	}
+
 }

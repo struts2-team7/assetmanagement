@@ -1,7 +1,9 @@
 package action;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -21,7 +23,7 @@ public class ReportAction extends ActionSupport {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	private Map<String, Integer> categories;
 	private ReportDao reportDao = new ReportDaoImpl();
 	
 	private List<AssetReport> assetReport = new ArrayList<AssetReport>();
@@ -39,6 +41,12 @@ public class ReportAction extends ActionSupport {
 		reportDao.getAssetReport().forEach(e -> System.out.println(e));
 		return SUCCESS;
 	}
-	
+	public Map<String, Integer> getCategories() {
+		categories = new HashMap<>();
+		categories.put("Nhà cửa, vật kiến trúc", 1);
+		categories.put("Phương tiện vận tải", 2);
+		categories.put("Công cụ, dụng cụ", 3);
+		return categories;
+	}
 	
 }

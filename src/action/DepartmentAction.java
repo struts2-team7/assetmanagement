@@ -48,11 +48,6 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Asset
 
 	public String list() {
 		departments = departmentDAO.list(Department.class);
-
-//		reportDao.getCategoryAssetReport().forEach(e-> System.out.println(e));
-//		reportDao.getDepartmentAssetReport().forEach(e-> System.out.println(e));
-//		reportDao.getAssetReport().forEach(e -> System.out.println(e));
-
 		return SUCCESS;
 	}
 
@@ -63,15 +58,16 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Asset
 	}
 
 	public String deleteDepartment() {
-		try {
-			HttpServletRequest request = (HttpServletRequest) ActionContext.getContext()
-					.get(ServletActionContext.HTTP_REQUEST);
-			departmentDAO.delete(Department.class, Long.parseLong(request.getParameter("id")));
-			return SUCCESS;
-		} catch (Exception e) {
-			addActionError("Không thể xóa phòng ban có tài sản");
-			return null;
+
+		HttpServletRequest request = (HttpServletRequest) ActionContext.getContext()
+				.get(ServletActionContext.HTTP_REQUEST);
+		Department department = departmentDAO.get(Department.class, Long.parseLong(request.getParameter("id")));
+		if (department.getAssets().size() > 0) {
+			addActionMessage("Không thể xóa phòng ban có tài sản");
+		} else {
+			departmentDAO.delete(department);
 		}
+		return SUCCESS;
 	}
 
 	public String editDepartment() {

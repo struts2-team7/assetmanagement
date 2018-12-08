@@ -30,6 +30,9 @@
 					<li><a href="report"> <i class="pe-7s-news-paper"></i>
 							<p>Báo cáo</p>
 					</a></li>
+					<li><a href="password-form.jsp"> <i class="pe-7s-user"></i>
+							<p>Đổi mật khẩu</p>
+					</a></li>
 				</ul>
 			</div>
 		</div>
@@ -47,6 +50,13 @@
 										<s:param name="departmentId" value="%{#parameters.departmentId}"></s:param>
 									</s:url>
 									<s:a href="%{newAssetURL}" cssClass="btn btn-info btn-fill pull-left">Thêm tài sản</s:a>
+									
+									<div>
+									<s:url id="exportURL" action="export">
+										<%-- <s:param name="departmentId" value="%{#parameters.departmentId}"></s:param> --%>
+									</s:url>
+									<s:a href="%{exportURL}" cssClass="btn btn-info btn-fill pull-right">Kết xuất</s:a>
+									</div>
 								</div>
 								<div class="content table-responsive table-full-width">
 									<table class="table table-hover table-striped">
@@ -80,7 +90,7 @@
 											</s:if>
 										</tbody>
 									</table>
-
+									
 								</div>
 							</div>
 						</div>
