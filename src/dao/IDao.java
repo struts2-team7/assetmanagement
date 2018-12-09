@@ -14,7 +14,7 @@ public interface IDao<T, ID extends Serializable> {
 	
 	void delete(T t);
 	
-	T findByCode(String code);
+	List<T> findByCode(Class<? extends T> clazz, String code);
 
-	T findByName(String name);
+	List<T> findByName(Class<? extends T> clazz, String name);
 }

@@ -63,19 +63,12 @@
 		<!-- Department -->
 		<action name="departments" method="list"
 			class="action.DepartmentAction">
-			<interceptor-ref name="store">
-				<param name="operationMode">RETRIEVE</param>
-			</interceptor-ref>
-			<interceptor-ref name="defaultStack">
-				<param name="workflow.excludeMethods">execute</param>
-			</interceptor-ref>
 			<result name="success">/departments.jsp</result>
-
+			<result name="input">/departments.jsp</result>
 		</action>
 		<action name="newDepartment" method="addNew"
 			class="action.DepartmentAction">
 			<result name="success">/addDepartment.jsp</result>
-
 		</action>
 		<action name="saveDepartment" method="saveDepartment"
 			class="action.DepartmentAction">
@@ -90,12 +83,10 @@
 		</action>
 		<action name="deleteDepartment" method="deleteDepartment"
 			class="action.DepartmentAction">
-			<interceptor-ref name="store">
-				<param name="operationMode">STORE</param>
-			</interceptor-ref>
-			<interceptor-ref name="defaultStack" />
-			<result name="success" type="redirect">departments</result>
-			<result name="input">/departments.jsp</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">departments</param>
+				<param name="actionErrors">${actionErrors}</param>
+			</result>
 		</action>
 
 

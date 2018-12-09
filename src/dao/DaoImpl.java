@@ -11,6 +11,7 @@ import com.googlecode.s2hibernate.struts2.plugin.annotations.TransactionTarget;
 
 public class DaoImpl<T, ID extends Serializable> implements IDao<T, ID> {
 
+
 	@SessionTarget
 	private Session session;
 
@@ -45,16 +46,18 @@ public class DaoImpl<T, ID extends Serializable> implements IDao<T, ID> {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public T findByCode(String code) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<T> findByCode(Class<? extends T> clazz, String code) {
+		return session.createQuery(String.format("FROM %s t WHERE t.code = :code", clazz.getName()))
+				.setParameter("code", code).list();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public T findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<T> findByName(Class<? extends T> clazz, String name) {
+		return session.createQuery(String.format("FROM %s t WHERE t.name = :name", clazz.getName()))
+				.setParameter("name", name).list();
 	}
 
 	@Override
@@ -65,7 +68,7 @@ public class DaoImpl<T, ID extends Serializable> implements IDao<T, ID> {
 			transaction.rollback();
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }

@@ -52,18 +52,39 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Asset
 	}
 
 	public String saveDepartment() {
-		System.out.println(department);
-		departmentDAO.saveOrUpdate(department);
-		return SUCCESS;
+		List<Department> dept1 = departmentDAO.findByCode(department.getClass(), department.getCode());
+		List<Department> dept2 = departmentDAO.findByName(department.getClass(), department.getName());
+		if (department.getId() == null) {
+			if (dept1.size() > 0) {
+				addFieldError("department.code", "Đã có mã phòng ban này");
+				return INPUT;
+			} else if (dept2.size() > 0) {
+				addFieldError("department.name", "Đã có tên phòng ban này");
+				return INPUT;
+			} else {
+				departmentDAO.saveOrUpdate(department);
+				return SUCCESS;
+			}
+		} else {
+			if (dept1.size() > 1) {
+				addFieldError("department.code", "Đã có mã phòng ban này");
+				return INPUT;
+			} else if (dept2.size() > 1) {
+				addFieldError("department.name", "Đã có tên phòng ban này");
+				return INPUT;
+			} else {
+				departmentDAO.saveOrUpdate(department);
+				return SUCCESS;
+			}
+		}
 	}
 
 	public String deleteDepartment() {
-
 		HttpServletRequest request = (HttpServletRequest) ActionContext.getContext()
 				.get(ServletActionContext.HTTP_REQUEST);
 		Department department = departmentDAO.get(Department.class, Long.parseLong(request.getParameter("id")));
 		if (department.getAssets().size() > 0) {
-			addActionMessage("Không thể xóa phòng ban có tài sản");
+			addActionError("Không thể xóa phòng ban có tài sản");
 		} else {
 			departmentDAO.delete(department);
 		}
@@ -74,7 +95,6 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Asset
 		HttpServletRequest request = (HttpServletRequest) ActionContext.getContext()
 				.get(ServletActionContext.HTTP_REQUEST);
 		department = departmentDAO.get(Department.class, Long.parseLong(request.getParameter("id")));
-		departmentDAO.saveOrUpdate(department);
 		return SUCCESS;
 	}
 

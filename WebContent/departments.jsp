@@ -45,9 +45,11 @@
 							<div class="card">
 								<div class="header">
 									<h4 class="title">Danh mục Phòng ban</h4>
-									<div class="errorMessage">
-										<s:actionmessage/>
-									</div>
+									<s:if test="%{#parameters.actionErrors != null}">
+										<div class="errorMessage">
+											<s:property value="%{#parameters.actionErrors}" />
+										</div>
+									</s:if>
 									<br> <a href="newDepartment" class="btn btn-info btn-fill pull-left">Thêm
 										phòng ban</a>
 								</div>

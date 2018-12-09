@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.Max;
+import org.hibernate.validator.Min;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -46,6 +49,8 @@ public class Asset implements Serializable {
 	@Column(name="usingperson")
 	private String usingPerson;
 	
+	@Min(value=0, message="Tỉ lệ tối thiểu bằng 0")
+	@Max(value=100, message="Tỉ lệ tối đa bằng 100")
 	@Column(name="dep_rate")
 	private Double depRate;
 	

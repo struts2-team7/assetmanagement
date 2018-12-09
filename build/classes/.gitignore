@@ -1,9 +1,3 @@
-/ApplicationResources.properties
 /action/
-/dao/
-/filter/
-/hibernate.cfg.xml
 /model/
-/struts.xml
-/dto/
-/interceptor/
+/dao/

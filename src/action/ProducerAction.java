@@ -51,7 +51,7 @@ public class ProducerAction extends ActionSupport implements ModelDriven<Asset>{
 	}
 	
 	public String saveProducer() {
-		if(producerDAO.findByName(producer.getName()) != null) {
+		if(producerDAO.findByName(producer.getClass(), producer.getName()) != null) {
 			addFieldError("producer.name", "Tên nhà sản xuất đã tồn tại. Vui lòng kiểm tra lại!");
 			return INPUT;
 		}
